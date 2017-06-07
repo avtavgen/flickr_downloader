@@ -37,6 +37,7 @@
                 <action android:name="com.geo.photogallery.SHOW_NOTIFICATION"/>
             </intent-filter>
         </receiver>
+        <activity android:name=".PhotoPageActivity" />
     </application>
 
 </manifest>

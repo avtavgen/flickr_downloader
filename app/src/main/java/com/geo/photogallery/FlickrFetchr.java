@@ -106,7 +106,6 @@ public class FlickrFetchr {
     }
 
     private void parseItems(List<GalleryItem> items, JSONObject jsonBody) throws IOException, JSONException {
-//        Gson gson = new GsonBuilder().create();
         JSONObject photosJsonObject = jsonBody.getJSONObject("photos");
         JSONArray photoJsonArray = photosJsonObject.getJSONArray("photo");
         for (int i = 0; i < photoJsonArray.length(); i++) {
@@ -118,7 +117,7 @@ public class FlickrFetchr {
                 continue;
             }
             item.setUrl(photoJsonObject.getString("url_s"));
-//            GalleryItem item = gson.fromJson(photoJsonObject.toString(), GalleryItem.class);
+            item.setOwner(photoJsonObject.getString("owner"));
             items.add(item);
         }
     }

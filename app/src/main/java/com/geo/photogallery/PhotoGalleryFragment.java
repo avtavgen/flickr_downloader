@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhotoGalleryFragment extends Fragment {
+public class PhotoGalleryFragment extends VisibleFragment {
 
     private static final String TAG = "PhotoGalleryFragment";
 
@@ -115,8 +115,8 @@ public class PhotoGalleryFragment extends Fragment {
         public void onBindViewHolder(PhotoHolder photoHolder, int position) {
             GalleryItem galleryItem = mGalleryItems.get(position);
 //            photoHolder.bindGalleryItem(galleryItem);
-//            Drawable placeholder = getResources().getDrawable(R.drawable.bill_up_close);
-//            photoHolder.bindDrawable(placeholder);
+            Drawable placeholder = getResources().getDrawable(R.drawable.bill_up_close);
+            photoHolder.bindDrawable(placeholder);
             mThumbnailDownloader.queueThumbnail(photoHolder, galleryItem.getUrl());
         }
 
@@ -145,7 +145,7 @@ public class PhotoGalleryFragment extends Fragment {
 
         @Override
         protected void onPostExecute(List<GalleryItem> items) {
-            mItems.addAll(items);
+            mItems = items;
             setupAdapter();
         }
     }
